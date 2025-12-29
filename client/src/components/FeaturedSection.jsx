@@ -1,7 +1,7 @@
 import React from 'react'
 import { ArrowRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import BlueCircle from './BlueCircle'
+import BlurCircle from './BlurCircle'
 import MovieCard from './MovieCard'
 import { dummyShowsData } from '../data/dummyShowsData'
 
@@ -9,16 +9,12 @@ const FeaturedSection = () => {
   const navigate = useNavigate()
 
   return (
-    <section className="relative px-6 md:px-16 lg:px-24 xl:px-32 py-20">
-      
-      {/* Decorative element */}
-      <BlueCircle top="0" left="-80px" />
+    <section className="relative px-6 md:px-16 lg:px-24 xl:px-32 py-20 overflow-hidden">
 
-      {/* Header */}
-      <div className="flex items-center justify-between mb-12">
-        <p className="text-gray-300 font-medium text-lg">
-          Now Showing
-        </p>
+      <BlurCircle top="20%" left="-200px" />
+
+      <div className="relative z-10 flex items-center justify-between mb-12">
+        <p className="text-gray-300 font-medium text-lg">Now Showing</p>
 
         <button
           onClick={() => navigate('/movies')}
@@ -29,8 +25,7 @@ const FeaturedSection = () => {
         </button>
       </div>
 
-      {/* Centered Movie Cards */}
-      <div className="mx-auto max-w-[1100px]">
+      <div className="mx-auto max-w-[1100px] relative z-10">
         <div className="flex flex-wrap justify-center gap-8">
           {dummyShowsData.slice(0, 4).map(movie => (
             <MovieCard key={movie.id} movie={movie} />
@@ -38,8 +33,7 @@ const FeaturedSection = () => {
         </div>
       </div>
 
-      {/* Show More */}
-      <div className="flex justify-center mt-20">
+      <div className="flex justify-center mt-20 relative z-10">
         <button
           onClick={() => {
             navigate('/movies')
